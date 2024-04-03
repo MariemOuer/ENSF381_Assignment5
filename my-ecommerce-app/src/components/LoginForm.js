@@ -29,7 +29,9 @@ const LoginForm = ({ switchToSignup }) => {
         </label>
       </div>
       <button type="submit">Login</button>
-      <button type="button" onClick={switchToSignup}>Switch to Signup</button>
+      <div>
+        <button type="button" onClick={switchToSignup}>Switch to Signup</button>
+      </div>
     </form>
   );
 };
