@@ -18,13 +18,13 @@ const LoginForm = ({ switchToSignup }) => {
     <form onSubmit={handleSubmit} name="loginForm">
       <div>
         <label>
-          Username
+          Username:
           <input name="username" type="text" placeholder="Username" />
         </label>
       </div>
       <div>
         <label>
-          Password
+          Password:
           <input name="password" type="password" placeholder="Password" />
         </label>
       </div>

@@ -34,25 +34,25 @@ const SignupForm = ({ switchToLogin }) => {
       )}
       <div>
         <label>
-          Username
+          Username:
           <input name="username" type="text" placeholder="Username" />
         </label>
       </div>
       <div>
         <label>
-          Password
+          Password:
           <input name="password" type="password" placeholder="Password" />
         </label>
       </div>
       <div>
         <label>
-          Confirm Password
+          Confirm Password:
           <input name="confirmPassword" type="password" placeholder="Confirm Password" />
         </label>
       </div>
       <div>
         <label>
-          Email
+          Email:
           <input name="email" type="email" placeholder="Email" />
         </label>
       </div>
