@@ -1,17 +1,47 @@
 import React from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook from React Router
 
 const LoginForm = ({ switchToSignup }) => {
+  const navigate = useNavigate(); // Instantiate the useNavigate hook
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const { username, password } = event.target.elements;
+
     if (!username.value || !password.value) {
       alert('Both fields are required.');
       return;
     }
-    // Here you would handle the login logic
-    console.log('Logging in with', username.value, password.value);
+
+    fetch('http://localhost:5000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: username.value,
+        password: password.value,
+      }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.error) {
+        alert(data.error); // Show error message if login fails
+      } else {
+        console.log('Success:', data);
+        // Assuming data.redirect contains the path to navigate to
+        navigate(data.redirect || '/homepage'); // Use navigate function with the redirect URL from the response
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert('Login failed: Invalid username or password');
+    });
   };
 
   return (
@@ -29,9 +59,7 @@ const LoginForm = ({ switchToSignup }) => {
         </label>
       </div>
       <button type="submit">Login</button>
-      <div>
-        <button type="button" onClick={switchToSignup}>Switch to Signup</button>
-      </div>
+
     </form>
   );
 };

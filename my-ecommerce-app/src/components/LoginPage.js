@@ -11,9 +11,15 @@ const LoginPage = () => {
     <div>
       <Header />
       {showLogin ? (
-        <LoginForm switchToSignup={() => setShowLogin(false)} />
+        <div>
+          <LoginForm />
+          <button type="button" onClick={() => setShowLogin(false)}>Switch to Signup</button>
+        </div>
       ) : (
-        <SignupForm switchToLogin={() => setShowLogin(true)} />
+        <div>
+          <SignupForm />
+          <button type="button" onClick={() => setShowLogin(true)}>Switch to Login</button>
+        </div>
       )}
       <Footer />
     </div>
